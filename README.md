@@ -19,7 +19,7 @@ Now let me talk about materialRefreshLayout of function
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/144913t3beqg3eics1xwwr.gif)
 
 
-(4)If you want to make waveform covering on XXX, it can be done.
+(4)If you want to make waveform covering on content, it can be done.
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/144736ah8xaeamz155zq54.gif)
 
