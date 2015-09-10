@@ -24,6 +24,45 @@ Now let me talk about MaterialRefreshLayout of function
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/144736ah8xaeamz155zq54.gif)
 
 
-(5)Finally, if you like the most simple effect,You can see the image below.
+(5)if you like the most simple effect,You can see the image below.
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
+
+(6)There are a lot of functions, you can see the source code...
+
+Usage
+=================================================
+Use it in your layout xml.
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+      <...ListView or GridView or RecyclerView or ScrollView and more...>
+
+</com.cjj.MaterialRefreshLayout>
+```
+Get instance and use it.
+```java
+ materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id...);
+ materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+      @Override
+      public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+          //refreshing...
+      }
+  }
+// refresh complete 
+materialRefreshLayout.finishRefresh();
+  
+```
+
+(1)if you like SwipeRefreshLayout drop-down refresh effect
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/165357v69hm9gmrggt6zhr.png)
+
+
+
+
