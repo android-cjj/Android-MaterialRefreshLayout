@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 建议在BaseActivity中代码声明 -->
+        <!-- <item name="android:windowTranslucentStatus">true</item> -->
+    </style>
+</resources>

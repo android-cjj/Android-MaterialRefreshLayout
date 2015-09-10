@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MaterialRefreshLayout</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <integer-array name="material_colors">
+        <item>@color/material_green</item>
+        <item>@color/material_red</item>
+
+        <item>@color/material_blue</item>
+        <item>@color/material_yellow</item>
+    </integer-array>
+</resources>
