@@ -2,7 +2,7 @@ MaterialRefreshLayout
 ==================================
 This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 8 . I hope you like it !
 
-Now let me talk about materialRefreshLayout of function
+Now let me talk about MaterialRefreshLayout of function
 ---------------------------------------------------------------------------
 (1)It can be done like SwipeRefreshLayout drop-down refresh effect,this is a kind of intrusive drop-down refresh.
 
