@@ -59,9 +59,125 @@ materialRefreshLayout.finishRefresh();
   
 ```
 
+Config
+=============
 (1)if you like SwipeRefreshLayout drop-down refresh effect
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/165357v69hm9gmrggt6zhr.png)
+![](http://www.apkbus.com/data/attachment/forum/201509/10/171338y8ufsxjrs7k2rxu3.jpg)
+
+In xml, use attributes.
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:overlay="true"
+    app:wave_show="false"
+    >
+```
+In java code.
+```java
+materialRefreshLayout.setIsOverLay(true);
+materialRefreshLayout.setWaveShow(false);
+```
+
+(2)if you like non-invasive drop-down refresh effect
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/171336i3x75d7x4tadxezt.jpg)
+
+In xml, use attributes.
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:overlay="false"
+    app:wave_show="false"
+    >
+```
+In java code.
+```java
+materialRefreshLayout.setIsOverLay(false);
+materialRefreshLayout.setWaveShow(false);
+```
+(3)if you like add a background of the wave shape.
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/171339lvhk3n3h4wkgkgdc.jpg)
+
+In xml, use attributes.
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:overlay="false"
+    app:wave_show="true"
+    app:wave_color="@color/material_green"
+    app:wave_height_type="normal"  (higher)
+    >
+```
+In java code.
+```java
+materialRefreshLayout.setWaveColor(0xffffffff);
+materialRefreshLayout.setIsOverLay(false);
+materialRefreshLayout.setWaveShow(true);
+```
+(4)If you want to make waveform covering on content
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/171334xtd0xphsag4ww4gs.jpg)
+
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:overlay="true"
+    app:wave_show="true"
+    app:wave_color="#90ffffff"
+    app:progress_colors="@array/material_colors"
+    app:wave_height_type="higher"
+    >
+```
+In java code.
+```java
+materialRefreshLayout.setWaveColor(0xf90fffff);
+materialRefreshLayout.setIsOverLay(true);
+materialRefreshLayout.setWaveShow(true);
+```
+
+(5)other...
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/171341xrgamch93mad4pcg.jpg)
+
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:overlay="false"
+    app:wave_show="false"
+    app:progress_colors="@array/material_colors"
+    app:wave_height_type="higher"
+    app:progress_show_circle_backgroud="false"
+    >
+```
+
+
+
+
+
+
+
 
 
 
