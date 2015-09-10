@@ -60,7 +60,10 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
     public void setWaveColor(int waveColor) {
         this.waveColor = waveColor;
-        Log.i("cjj_log", "color-------123>" + waveColor);
+        if(null!= materialWaveView)
+        {
+            materialWaveView.setColor( this.waveColor );
+        }
     }
 
     public void setProgressBg(int progressBg)

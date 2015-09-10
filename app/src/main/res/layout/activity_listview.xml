@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:wave_color="#ff8BC34A"
+    app:progress_show_circle_backgroud="true"
+    app:overlay="false"
+    app:wave_show="true"
+    app:progress_backgroud_color="#FFFAFAFA"
+    app:progress_colors="@array/material_colors"
+    app:wave_height_type="normal"
+    app:progress_show_arrow="true"
+    >
+
+<ListView
+    android:id="@+id/lv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></ListView>
+
+
+</com.cjj.MaterialRefreshLayout>

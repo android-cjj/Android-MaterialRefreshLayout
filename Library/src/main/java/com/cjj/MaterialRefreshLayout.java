@@ -127,13 +127,13 @@ public class MaterialRefreshLayout extends FrameLayout {
             MaterialWaveView.DefaulHeadHeight = hIGHER_HEAD_HEIGHT;
             MaterialWaveView.DefaulWaveHeight = HIGHER_WAVE_HEIGHT;
         }
-        waveColor = t.getColor(R.styleable.MaterialRefreshLayout_wave_color, Color.RED);
+        waveColor = t.getColor(R.styleable.MaterialRefreshLayout_wave_color, Color.WHITE);
         isShowWave = t.getBoolean(R.styleable.MaterialRefreshLayout_wave_show,true);
 
         /**attrs for circleprogressbar*/
         colorsId = t.getResourceId(R.styleable.MaterialRefreshLayout_progress_colors, R.array.material_colors);
         colorSchemeColors = context.getResources().getIntArray(colorsId);
-        showArrow = t.getBoolean(R.styleable.MaterialRefreshLayout_progress_show_arrow, false);
+        showArrow = t.getBoolean(R.styleable.MaterialRefreshLayout_progress_show_arrow, true);
         textType = t.getInt(R.styleable.MaterialRefreshLayout_progress_text_visibility, 1);
         progressTextColor = t.getColor(R.styleable.MaterialRefreshLayout_progress_text_color, Color.BLACK);
         progressValue = t.getInteger(R.styleable.MaterialRefreshLayout_progress_value, 0);
@@ -298,6 +298,30 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     }
 
+    public void setProgressColors(int[] colors)
+    {
+        this.colorSchemeColors = colors;
+    }
+
+    public void setShowArrow(boolean showArrow)
+    {
+        this.showArrow = showArrow;
+    }
+
+    public void setShowProgressBg(boolean showProgressBg)
+    {
+        this.showProgressBg = showProgressBg;
+    }
+
+    public void setWaveColor(int waveColor)
+    {
+        this.waveColor = waveColor;
+    }
+
+    public void setWaveShow(boolean isShowWave){
+        this.isShowWave = isShowWave;
+    }
+
     public void setIsOverLay(boolean isOverLay)
     {
         this.isOverlay = isOverLay;
@@ -306,7 +330,6 @@ public class MaterialRefreshLayout extends FrameLayout {
     public void setProgressValue(int progressValue)
     {
         this.progressValue = progressValue;
-        Log.i(Tag,"progress------->>"+progressValue);
         materialHeadView.setProgressValue(progressValue);
     }
 

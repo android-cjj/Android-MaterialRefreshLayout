@@ -20,14 +20,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/refresh"
-    app:wave_color="#90ffffff"
-    app:progress_show_circle_backgroud="true"
-    app:overlay="true"
+    app:overlay="false"
     app:wave_show="true"
-    app:progress_backgroud_color="#FFFAFAFA"
     app:progress_colors="@array/material_colors"
     app:wave_height_type="normal"
-    app:progress_show_arrow="true"
     >
 
 
