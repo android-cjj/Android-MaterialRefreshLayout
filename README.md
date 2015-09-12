@@ -33,6 +33,15 @@ Now let me talk about MaterialRefreshLayout of function
 
 Usage
 =================================================
+
+Add dependency.
+
+```
+dependencies {
+    compile 'com.cjj.materialrefreshlayout:library:1.0.0'
+}
+```
+
 Use it in your layout xml.
 ```xml
 <com.cjj.MaterialRefreshLayout
@@ -177,7 +186,7 @@ AT LAST
 ===================================================================
 If the MaterialRefreshLayout has failed to meet to your requirements, you can go to the [BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout) to find what you need.
 
-THTANKS
+THANKS
 ============================================
 [JakeWharton/NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 
