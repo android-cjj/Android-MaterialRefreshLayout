@@ -43,11 +43,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
-/**
- * Fancy progress indicator for Material theme.
- *
- * @hide
- */
 public class MaterialProgressDrawable extends Drawable implements Animatable {
     // Maps to ProgressBar.Large style
     public static final int LARGE = 0;

@@ -1,14 +1,16 @@
 package com.cjj;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +18,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.view.ViewHelper;
-
-/**
- * Created by cjj on 2015/9/7.
- */
 public class MaterialRefreshLayout extends FrameLayout {
 
     public static final String Tag = "cjj_log";
@@ -163,18 +156,10 @@ public class MaterialRefreshLayout extends FrameLayout {
         }
 
         setWaveHeight(Util.dip2px(getContext(), waveHeight));
-
         setHeaderHeight(Util.dip2px(getContext(), headHeight));
 
         materialHeadView = new MaterialHeadView(getContext());
-        if(isShowWave)
-        {
-            materialHeadView.setWaveColor(waveColor);
-        }else
-        {
-            materialHeadView.setWaveColor(0x00000000);
-        }
-
+        materialHeadView.setWaveColor(isShowWave ? waveColor : Color.WHITE);
         materialHeadView.showProgressArrow(showArrow);
         materialHeadView.setProgressColors(colorSchemeColors);
         materialHeadView.setProgressStokeWidth(3);
@@ -237,7 +222,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
                     }
                     if (!isOverlay)
-                        ViewHelper.setTranslationY(mChildView, offsetY);
+                        ViewCompat.setTranslationY(mChildView, offsetY);
 
                 }
                 return true;
@@ -259,7 +244,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
                     } else {
 
-                        if (ViewHelper.getTranslationY(mChildView) >= mHeadHeight) {
+                        if (ViewCompat.getTranslationY(mChildView) >= mHeadHeight) {
                             createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
                            updateListener();
                         } else {
@@ -334,14 +319,14 @@ public class MaterialRefreshLayout extends FrameLayout {
     }
 
     public void createAnimatorTranslationY(final View v, final float h, final FrameLayout fl) {
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(v, "translationY", ViewHelper.getTranslationY(v), h);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(v, "translationY", ViewCompat.getTranslationY(v), h);
         objectAnimator.setDuration(200);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
         objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                float height = ViewHelper.getTranslationY(v);
+                float height = ViewCompat.getTranslationY(v);
                 fl.getLayoutParams().height = (int) height;
                 fl.requestLayout();
             }
@@ -385,7 +370,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     public void finishRefreshing() {
         if (mChildView != null) {
-            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mChildView, "translationY", ViewHelper.getTranslationY(mChildView), 0);
+            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mChildView, "translationY", ViewCompat.getTranslationY(mChildView), 0);
             objectAnimator.setDuration(200);
             objectAnimator.setInterpolator(new DecelerateInterpolator());
             objectAnimator.start();

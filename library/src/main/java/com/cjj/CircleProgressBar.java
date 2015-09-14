@@ -35,9 +35,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
-
 /**
  * The author is lsjwzh(MaterialLoadingProgressBar) link{https://github.com/lsjwzh/MaterialLoadingProgressBar},
  * I did some slight modifications
