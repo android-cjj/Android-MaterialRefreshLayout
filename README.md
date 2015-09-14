@@ -38,7 +38,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefreshlayout:library:1.0.0'
+    compile 'com.cjj.materialrefeshlayout:Library:1.0.0'
 }
 ```
 
