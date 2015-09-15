@@ -193,6 +193,9 @@ AT LAST
 ===================================================================
 If the MaterialRefreshLayout has failed to meet to your requirements, you can go to the [BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout) to find what you need.
 
+[About me](http://android-cjj.github.io/)
+------------------------------------
+
 THANKS
 ============================================
 
