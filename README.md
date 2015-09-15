@@ -195,7 +195,6 @@ If the MaterialRefreshLayout has failed to meet to your requirements, you can go
 
 THANKS
 ============================================
-[JakeWharton/NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 
 [lsjwzh/MaterialLoadingProgressBar](https://github.com/lsjwzh/MaterialLoadingProgressBar)
 
