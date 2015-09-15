@@ -2,9 +2,6 @@ package com.cjj;
 
 import android.content.Context;
 
-/**
- * Created by Administrator on 2015/9/6.
- */
 public class Util {
 
     public static int dip2px(Context context, float dpValue) {

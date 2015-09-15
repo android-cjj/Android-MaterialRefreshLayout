@@ -1,5 +1,6 @@
 package com.cjj;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,11 +11,6 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
-import com.nineoldandroids.animation.ValueAnimator;
-
-/**
- * Created by cjj on 2015/9/7.
- */
 public class MaterialWaveView extends View implements MaterialHeadListener {
     private int waveHeight;
     private int headHeight;

@@ -1,25 +1,15 @@
 package com.cjj;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Color;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
-
-/**
- * Created by cjj on 2015/9/7.
- */
 public class MaterialHeadView extends FrameLayout implements MaterialHeadListener{
     private MaterialWaveView materialWaveView;
     private CircleProgressBar circleProgressBar;
@@ -152,9 +142,9 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
         if(circleProgressBar != null)
         {
             circleProgressBar.onComlete(materialRefreshLayout);
-            ViewHelper.setTranslationY(circleProgressBar,0);
-            ViewHelper.setScaleX(circleProgressBar,0);
-            ViewHelper.setScaleY(circleProgressBar,0);
+            ViewCompat.setTranslationY(circleProgressBar,0);
+            ViewCompat.setScaleX(circleProgressBar, 0);
+            ViewCompat.setScaleY(circleProgressBar,0);
         }
 
 
@@ -182,9 +172,9 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
         {
             circleProgressBar.onPull(materialRefreshLayout, fraction);
             float a = Util.limitValue(1,fraction);
-            ViewHelper.setScaleX(circleProgressBar, 1);
-            ViewHelper.setScaleY(circleProgressBar, 1);
-            ViewHelper.setAlpha(circleProgressBar, a);
+            ViewCompat.setScaleX(circleProgressBar, 1);
+            ViewCompat.setScaleY(circleProgressBar, 1);
+            ViewCompat.setAlpha(circleProgressBar, a);
         }
     }
 
@@ -207,8 +197,7 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
 
 
-    public void scaleView(View v,float a,float b)
-    {
+    public void scaleView(View v,float a,float b) {
         ObjectAnimator ax = ObjectAnimator.ofFloat(v,"scaleX",a,b);
         ObjectAnimator ay = ObjectAnimator.ofFloat(v,"scaleY",a,b);
         AnimatorSet animSet = new AnimatorSet();

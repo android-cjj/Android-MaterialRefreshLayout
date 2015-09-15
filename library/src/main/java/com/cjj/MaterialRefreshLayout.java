@@ -5,10 +5,10 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +16,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.view.ViewHelper;
-
-/**
- * Created by cjj on 2015/9/7.
- */
 public class MaterialRefreshLayout extends FrameLayout {
 
     public static final String Tag = "cjj_log";
@@ -147,7 +138,9 @@ public class MaterialRefreshLayout extends FrameLayout {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        FrameLayout headViewLayout = new FrameLayout(getContext());
+        Context context = getContext();
+
+        FrameLayout headViewLayout = new FrameLayout(context);
         LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
         layoutParams.gravity = Gravity.TOP;
         headViewLayout.setLayoutParams(layoutParams);
@@ -162,19 +155,11 @@ public class MaterialRefreshLayout extends FrameLayout {
             return;
         }
 
-        setWaveHeight(Util.dip2px(getContext(), waveHeight));
+        setWaveHeight(Util.dip2px(context, waveHeight));
+        setHeaderHeight(Util.dip2px(context, headHeight));
 
-        setHeaderHeight(Util.dip2px(getContext(), headHeight));
-
-        materialHeadView = new MaterialHeadView(getContext());
-        if(isShowWave)
-        {
-            materialHeadView.setWaveColor(waveColor);
-        }else
-        {
-            materialHeadView.setWaveColor(0x00000000);
-        }
-
+        materialHeadView = new MaterialHeadView(context);
+        materialHeadView.setWaveColor(isShowWave ? waveColor : Color.WHITE);
         materialHeadView.showProgressArrow(showArrow);
         materialHeadView.setProgressColors(colorSchemeColors);
         materialHeadView.setProgressStokeWidth(3);
@@ -237,7 +222,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
                     }
                     if (!isOverlay)
-                        ViewHelper.setTranslationY(mChildView, offsetY);
+                        ViewCompat.setTranslationY(mChildView, offsetY);
 
                 }
                 return true;
@@ -259,7 +244,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
                     } else {
 
-                        if (ViewHelper.getTranslationY(mChildView) >= mHeadHeight) {
+                        if (ViewCompat.getTranslationY(mChildView) >= mHeadHeight) {
                             createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
                            updateListener();
                         } else {
@@ -334,22 +319,16 @@ public class MaterialRefreshLayout extends FrameLayout {
     }
 
     public void createAnimatorTranslationY(final View v, final float h, final FrameLayout fl) {
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(v, "translationY", ViewHelper.getTranslationY(v), h);
-        objectAnimator.setDuration(200);
-        objectAnimator.setInterpolator(new DecelerateInterpolator());
-        objectAnimator.start();
-        objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float height = ViewHelper.getTranslationY(v);
+        ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(v);
+        viewPropertyAnimatorCompat.setDuration(200);
+        viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+        viewPropertyAnimatorCompat.translationY(h);
+        viewPropertyAnimatorCompat.start();
+        viewPropertyAnimatorCompat.setUpdateListener(new ViewPropertyAnimatorUpdateListener() {
+            @Override public void onAnimationUpdate(View view) {
+                float height = ViewCompat.getTranslationY(v);
                 fl.getLayoutParams().height = (int) height;
                 fl.requestLayout();
-            }
-        });
-        objectAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
             }
         });
     }
@@ -385,10 +364,12 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     public void finishRefreshing() {
         if (mChildView != null) {
-            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mChildView, "translationY", ViewHelper.getTranslationY(mChildView), 0);
-            objectAnimator.setDuration(200);
-            objectAnimator.setInterpolator(new DecelerateInterpolator());
-            objectAnimator.start();
+            ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(mChildView);
+            viewPropertyAnimatorCompat.setDuration(200);
+            viewPropertyAnimatorCompat.y(ViewCompat.getTranslationY(mChildView));
+            viewPropertyAnimatorCompat.translationY(0);
+            viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+            viewPropertyAnimatorCompat.start();
             if (mMaterialHeadListener != null) {
                 mMaterialHeadListener.onComlete(this);
             }
@@ -403,7 +384,7 @@ public class MaterialRefreshLayout extends FrameLayout {
         }
         isRefreshing = false;
         progressValue = 0;
-       setProgressValue(0);
+        setProgressValue(0);
     }
 
     public void finishRefresh()
