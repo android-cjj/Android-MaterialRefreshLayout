@@ -1,8 +1,8 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout
+MaterialRefreshLayout v1.1.0
 ==================================
-This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 8 . I hope you like it !
+This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
 
 Now let me talk about MaterialRefreshLayout of function
@@ -40,7 +40,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:Library:1.0.0'
+    compile 'com.cjj.materialrefeshlayout:library:1.1.0'
 }
 ```
 
@@ -183,6 +183,11 @@ materialRefreshLayout.setWaveShow(true);
     app:progress_show_circle_backgroud="false"
     >
 ```
+
+V 1.1.0
+===========================
+a new way to perform animations with support library, the library size and the amount of libraries decreased.
+
 
 AT LAST
 ===================================================================
