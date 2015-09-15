@@ -29,8 +29,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
+
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -39,8 +38,6 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
 public class MaterialProgressDrawable extends Drawable implements Animatable {
@@ -147,8 +144,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
      * Set the overall size for the progress spinner. This updates the radius
      * and stroke width of the ring.
      *
-     * @param size One of {@link MaterialProgressDrawable.LARGE} or
-     *             {@link MaterialProgressDrawable.DEFAULT}
+
      */
     public void updateSizes(@ProgressDrawableSize int size) {
         final DisplayMetrics metrics = mResources.getDisplayMetrics();
@@ -394,8 +390,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
         this.mShowArrowOnFirstStart = showArrowOnFirstStart;
     }
 
-    @Retention(RetentionPolicy.CLASS)
-    @IntDef({LARGE, DEFAULT})
+
     public @interface ProgressDrawableSize {
     }
 
@@ -516,7 +511,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
          *
          * @param colors Array of integers describing the colors. Must be non-<code>null</code>.
          */
-        public void setColors(@NonNull int[] colors) {
+        public void setColors(int[] colors) {
             mColors = colors;
             // if colors are reset, make sure to reset the color index as well
             setColorIndex(0);

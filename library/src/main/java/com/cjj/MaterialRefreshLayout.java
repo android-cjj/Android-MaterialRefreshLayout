@@ -266,9 +266,7 @@ public class MaterialRefreshLayout extends FrameLayout {
     public void updateListener()
     {
         isRefreshing = true;
-        /**
-         * refreshing。。。
-         */
+
         if (materialHeadView != null) {
             materialHeadView.onRefreshing(MaterialRefreshLayout.this);
         }

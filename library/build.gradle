@@ -9,7 +9,7 @@ android {
     buildToolsVersion "22.0.0"
     resourcePrefix "MaterialRefreshLayout"	//这个随便填
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 11
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -29,7 +29,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:support-v4:22.2.1'
 }
 def siteUrl = 'https://github.com/android-cjj/Android-MaterialRefreshLayout'      // 项目的主页

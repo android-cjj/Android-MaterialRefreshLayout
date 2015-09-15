@@ -8,14 +8,22 @@ android {
         applicationId "com.cjj.android_materialrefreshlayout"
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
 dependencies {
-    compile project(':library')
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.cjj.materialrefeshlayout:library:1.1.0'
     compile 'com.android.support:recyclerview-v7:22.2.1'
     compile 'com.android.support:cardview-v7:22.2.1'
 }

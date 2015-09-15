@@ -197,12 +197,12 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
 
 
-    public void scaleView(View v,float a,float b) {
-        ObjectAnimator ax = ObjectAnimator.ofFloat(v,"scaleX",a,b);
-        ObjectAnimator ay = ObjectAnimator.ofFloat(v,"scaleY",a,b);
-        AnimatorSet animSet = new AnimatorSet();
-        animSet.play(ax).with(ay);
-        animSet.setDuration(200);
-        animSet.start();
-    }
+//    public void scaleView(View v,float a,float b) {
+//        ObjectAnimator ax = ObjectAnimator.ofFloat(v,"scaleX",a,b);
+//        ObjectAnimator ay = ObjectAnimator.ofFloat(v,"scaleY",a,b);
+//        AnimatorSet animSet = new AnimatorSet();
+//        animSet.play(ax).with(ay);
+//        animSet.setDuration(200);
+//        animSet.start();
+//    }
 }
