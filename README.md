@@ -1,6 +1,6 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout v1.1.0
+MaterialRefreshLayout v1.2.1
 ==================================
 This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
@@ -40,7 +40,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:library:1.1.0'
+    compile 'com.cjj.materialrefeshlayout:library:1.2.1'
 }
 ```
 
@@ -183,6 +183,14 @@ materialRefreshLayout.setWaveShow(true);
     app:progress_show_circle_backgroud="false"
     >
 ```
+
+V 1.2.1
+===========================
+add pull up loading more features
+
+V 1.2.0
+===========================
+add progress size type ,you can use xml attr to set app:progress_size_type="normal"(big) and fix some bugs
 
 V 1.1.0
 ===========================
