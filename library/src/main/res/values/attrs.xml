@@ -26,5 +26,10 @@
             <enum name="visible" value="0"/>
             <enum name="invisible" value="1"/>
         </attr>
+        <attr name="progress_size_type" format="enum">
+            <enum name="normal" value="0"></enum>
+            <enum name="big" value="1"></enum>
+        </attr>
+        <attr name="isLoadMore" format="boolean"></attr>
     </declare-styleable>
 </resources>

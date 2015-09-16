@@ -48,12 +48,18 @@ public class RecyclerViewActivity extends BaseActivity {
 
                     }
                 }, 3000);
+                materialRefreshLayout.finishRefreshLoadMore();
 
             }
 
             @Override
             public void onfinish() {
                 Toast.makeText(RecyclerViewActivity.this, "finish", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                Toast.makeText(RecyclerViewActivity.this, "load more", Toast.LENGTH_LONG).show();
             }
         });
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
@@ -168,7 +174,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
         @Override
         public int getItemCount() {
-            return 4;
+            return 3;
         }
     }
 }

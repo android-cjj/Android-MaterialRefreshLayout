@@ -10,30 +10,30 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class MaterialHeadView extends FrameLayout implements MaterialHeadListener{
+public class MaterialFoodView extends FrameLayout implements MaterialHeadListener {
     private MaterialWaveView materialWaveView;
     private CircleProgressBar circleProgressBar;
     private int waveColor;
     private int progressTextColor;
     private int[] progress_colors;
     private int progressStokeWidth;
-    private boolean isShowArrow,isShowProgressBg;
-    private int progressValue,progressValueMax;
+    private boolean isShowArrow, isShowProgressBg;
+    private int progressValue, progressValueMax;
     private int textType;
     private int progressBg;
     private int progressSize;
     private MaterialHeadListener listener;
 
 
-    public MaterialHeadView(Context context) {
+    public MaterialFoodView(Context context) {
         this(context, null);
     }
 
-    public MaterialHeadView(Context context, AttributeSet attrs) {
+    public MaterialFoodView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MaterialHeadView(Context context, AttributeSet attrs, int defStyle) {
+    public MaterialFoodView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }
@@ -51,44 +51,36 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
     public void setWaveColor(int waveColor) {
         this.waveColor = waveColor;
-        if(null!= materialWaveView)
-        {
-            materialWaveView.setColor( this.waveColor );
+        if (null != materialWaveView) {
+            materialWaveView.setColor(this.waveColor);
         }
     }
 
-    public void setProgressSize(int progressSize)
-    {
+    public void setProgressSize(int progressSize) {
         this.progressSize = progressSize;
     }
 
-    public void setProgressBg(int progressBg)
-    {
+    public void setProgressBg(int progressBg) {
         this.progressBg = progressBg;
     }
 
-    public void setIsProgressBg(boolean isShowProgressBg)
-    {
+    public void setIsProgressBg(boolean isShowProgressBg) {
         this.isShowProgressBg = isShowProgressBg;
     }
 
-    public void setProgressTextColor(int textColor)
-    {
+    public void setProgressTextColor(int textColor) {
         this.progressTextColor = textColor;
     }
 
-    public void setProgressColors(int[] colors)
-    {
+    public void setProgressColors(int[] colors) {
         this.progress_colors = colors;
     }
 
-    public void setTextType(int textType)
-    {
+    public void setTextType(int textType) {
         this.textType = textType;
     }
 
-    public void setProgressValue(int value)
-    {
+    public void setProgressValue(int value) {
         this.progressValue = value;
         this.post(new Runnable() {
             @Override
@@ -99,18 +91,15 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
     }
 
-    public void setProgressValueMax(int value)
-    {
+    public void setProgressValueMax(int value) {
         this.progressValueMax = value;
     }
 
-    public void setProgressStokeWidth(int w)
-    {
+    public void setProgressStokeWidth(int w) {
         this.progressStokeWidth = w;
     }
 
-    public void showProgressArrow(boolean isShowArrow)
-    {
+    public void showProgressArrow(boolean isShowArrow) {
         this.isShowArrow = isShowArrow;
     }
 
@@ -122,7 +111,7 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
         addView(materialWaveView);
 
         circleProgressBar = new CircleProgressBar(getContext());
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(Util.dip2px(getContext(),progressSize),Util.dip2px(getContext(),progressSize));
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(Util.dip2px(getContext(), progressSize), Util.dip2px(getContext(), progressSize));
         layoutParams.gravity = Gravity.CENTER;
         circleProgressBar.setLayoutParams(layoutParams);
         circleProgressBar.setColorSchemeColors(progress_colors);
@@ -139,42 +128,39 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
     @Override
     public void onComlete(MaterialRefreshLayout materialRefreshLayout) {
-        if(materialWaveView != null)
-        {
+        if (materialWaveView != null) {
             materialWaveView.onComlete(materialRefreshLayout);
         }
-        if(circleProgressBar != null)
-        {
+        if (circleProgressBar != null) {
             circleProgressBar.onComlete(materialRefreshLayout);
-            ViewCompat.setTranslationY(circleProgressBar,0);
+            ViewCompat.setTranslationY(circleProgressBar, 0);
             ViewCompat.setScaleX(circleProgressBar, 0);
-            ViewCompat.setScaleY(circleProgressBar,0);
+            ViewCompat.setScaleY(circleProgressBar, 0);
         }
+
 
     }
 
     @Override
     public void onBegin(MaterialRefreshLayout materialRefreshLayout) {
-        if(materialWaveView != null)
-        {
+        if (materialWaveView != null) {
             materialWaveView.onBegin(materialRefreshLayout);
         }
-        if(circleProgressBar != null)
-        {
+        if (circleProgressBar != null) {
             circleProgressBar.onBegin(materialRefreshLayout);
+            ViewCompat.setScaleX(circleProgressBar, 1);
+            ViewCompat.setScaleY(circleProgressBar, 1);
         }
     }
 
     @Override
     public void onPull(MaterialRefreshLayout materialRefreshLayout, float fraction) {
-        if(materialWaveView != null)
-        {
+        if (materialWaveView != null) {
             materialWaveView.onPull(materialRefreshLayout, fraction);
         }
-        if(circleProgressBar != null)
-        {
+        if (circleProgressBar != null) {
             circleProgressBar.onPull(materialRefreshLayout, fraction);
-            float a = Util.limitValue(1,fraction);
+            float a = Util.limitValue(1, fraction);
             ViewCompat.setScaleX(circleProgressBar, 1);
             ViewCompat.setScaleY(circleProgressBar, 1);
             ViewCompat.setAlpha(circleProgressBar, a);
@@ -188,24 +174,14 @@ public class MaterialHeadView extends FrameLayout implements MaterialHeadListene
 
     @Override
     public void onRefreshing(MaterialRefreshLayout materialRefreshLayout) {
-        if(materialWaveView != null)
-        {
+        if (materialWaveView != null) {
             materialWaveView.onRefreshing(materialRefreshLayout);
         }
-        if(circleProgressBar != null)
-        {
+        if (circleProgressBar != null) {
             circleProgressBar.onRefreshing(materialRefreshLayout);
         }
     }
 
-
-
-//    public void scaleView(View v,float a,float b) {
-//        ObjectAnimator ax = ObjectAnimator.ofFloat(v,"scaleX",a,b);
-//        ObjectAnimator ay = ObjectAnimator.ofFloat(v,"scaleY",a,b);
-//        AnimatorSet animSet = new AnimatorSet();
-//        animSet.play(ax).with(ay);
-//        animSet.setDuration(200);
-//        animSet.start();
-//    }
 }
+
+

@@ -29,6 +29,7 @@ public class ScrollViewActivity extends BaseActivity implements View.OnClickList
 
                     }
                 }, 5000);
+                materialRefreshLayout.finishRefreshLoadMore();
 
             }
 

@@ -51,7 +51,7 @@ public class CircleProgressBar extends ImageView implements MaterialHeadListener
 
 
     public static final int DEFAULT_CIRCLE_BG_LIGHT = 0xFFFAFAFA;
-    private static final int DEFAULT_CIRCLE_DIAMETER = 56;
+    private static final int DEFAULT_CIRCLE_DIAMETER = 40;
     private static final int STROKE_WIDTH_LARGE = 3;
     public static final int DEFAULT_TEXT_SIZE = 9;
 

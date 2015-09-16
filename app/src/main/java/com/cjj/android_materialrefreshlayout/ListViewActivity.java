@@ -22,9 +22,10 @@ public class ListViewActivity extends BaseActivity {
             array[i] = "cjj " + i;
         }
 
-        ListView listView = (ListView) findViewById(R.id.lv);
+        final ListView listView = (ListView) findViewById(R.id.lv);
         listView.setAdapter(new android.widget.ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array));
         materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
+        materialRefreshLayout.setLoadMore(true);
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -41,6 +42,11 @@ public class ListViewActivity extends BaseActivity {
             @Override
             public void onfinish() {
                 Toast.makeText(ListViewActivity.this, "finish", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                Toast.makeText(ListViewActivity.this, "load more", Toast.LENGTH_LONG).show();
             }
         });
     }

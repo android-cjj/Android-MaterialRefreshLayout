@@ -8,12 +8,14 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 public class MaterialRefreshLayout extends FrameLayout {
@@ -21,6 +23,8 @@ public class MaterialRefreshLayout extends FrameLayout {
     public static final String Tag = "cjj_log";
 
     private MaterialHeadView materialHeadView;
+
+    private MaterialFoodView materialFoodView;
 
     private boolean isOverlay;
 
@@ -33,6 +37,12 @@ public class MaterialRefreshLayout extends FrameLayout {
     private int DEFAULT_HEAD_HEIGHT = 70;
 
     private int hIGHER_HEAD_HEIGHT = 100;
+
+    private int DEFAULT_PROGRESS_SIZE = 50;
+
+    private int BIG_PROGRESS_SIZE = 60;
+
+    private int PROGRESS_STOKE_WIDTH = 3;
 
     private int waveColor;
 
@@ -51,8 +61,6 @@ public class MaterialRefreshLayout extends FrameLayout {
     private float mCurrentY;
 
     private DecelerateInterpolator decelerateInterpolator;
-
-    private MaterialHeadListener mMaterialHeadListener;
 
     private float headHeight;
 
@@ -77,6 +85,14 @@ public class MaterialRefreshLayout extends FrameLayout {
     private int progressBg;
 
     private boolean isShowWave;
+
+    private int progressSizeType;
+
+    private int progressSize = 0;
+
+    private boolean isLoadMoreing;
+
+    private boolean isLoadMore;
 
     public MaterialRefreshLayout(Context context) {
         this(context, null, 0);
@@ -119,7 +135,7 @@ public class MaterialRefreshLayout extends FrameLayout {
             MaterialWaveView.DefaulWaveHeight = HIGHER_WAVE_HEIGHT;
         }
         waveColor = t.getColor(R.styleable.MaterialRefreshLayout_wave_color, Color.WHITE);
-        isShowWave = t.getBoolean(R.styleable.MaterialRefreshLayout_wave_show,true);
+        isShowWave = t.getBoolean(R.styleable.MaterialRefreshLayout_wave_show, true);
 
         /**attrs for circleprogressbar*/
         colorsId = t.getResourceId(R.styleable.MaterialRefreshLayout_progress_colors, R.array.material_colors);
@@ -130,7 +146,15 @@ public class MaterialRefreshLayout extends FrameLayout {
         progressValue = t.getInteger(R.styleable.MaterialRefreshLayout_progress_value, 0);
         progressMax = t.getInteger(R.styleable.MaterialRefreshLayout_progress_max_value, 100);
         showProgressBg = t.getBoolean(R.styleable.MaterialRefreshLayout_progress_show_circle_backgroud, true);
-        progressBg = t.getColor(R.styleable.MaterialRefreshLayout_progress_backgroud_color,CircleProgressBar.DEFAULT_CIRCLE_BG_LIGHT);
+        progressBg = t.getColor(R.styleable.MaterialRefreshLayout_progress_backgroud_color, CircleProgressBar.DEFAULT_CIRCLE_BG_LIGHT);
+        progressSizeType = t.getInt(R.styleable.MaterialRefreshLayout_progress_size_type,0);
+        if(progressSizeType == 0)
+        {
+            progressSize = DEFAULT_PROGRESS_SIZE;
+        }else {
+            progressSize = BIG_PROGRESS_SIZE;
+        }
+        isLoadMore = t.getBoolean(R.styleable.MaterialRefreshLayout_isLoadMore,false);
     }
 
 
@@ -161,8 +185,9 @@ public class MaterialRefreshLayout extends FrameLayout {
         materialHeadView = new MaterialHeadView(context);
         materialHeadView.setWaveColor(isShowWave ? waveColor : Color.WHITE);
         materialHeadView.showProgressArrow(showArrow);
+        materialHeadView.setProgressSize(progressSize);
         materialHeadView.setProgressColors(colorSchemeColors);
-        materialHeadView.setProgressStokeWidth(3);
+        materialHeadView.setProgressStokeWidth(PROGRESS_STOKE_WIDTH);
         materialHeadView.setTextType(textType);
         materialHeadView.setProgressTextColor(progressTextColor);
         materialHeadView.setProgressValue(progressValue);
@@ -170,6 +195,22 @@ public class MaterialRefreshLayout extends FrameLayout {
         materialHeadView.setIsProgressBg(showProgressBg);
         materialHeadView.setProgressBg(progressBg);
         setHeaderView(materialHeadView);
+
+        materialFoodView = new MaterialFoodView(context);
+        LayoutParams layoutParams2 = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Util.dip2px(context,hIGHER_HEAD_HEIGHT));
+        layoutParams2.gravity = Gravity.BOTTOM;
+        materialFoodView.setLayoutParams(layoutParams2);
+        materialFoodView.showProgressArrow(showArrow);
+        materialFoodView.setProgressSize(progressSize);
+        materialFoodView.setProgressColors(colorSchemeColors);
+        materialFoodView.setProgressStokeWidth(PROGRESS_STOKE_WIDTH);
+        materialFoodView.setTextType(textType);
+        materialFoodView.setProgressValue(progressValue);
+        materialFoodView.setProgressValueMax(progressMax);
+        materialFoodView.setIsProgressBg(showProgressBg);
+        materialFoodView.setProgressBg(progressBg);
+        materialFoodView.setVisibility(View.GONE);
+        setFooderView(materialFoodView);
     }
 
 
@@ -190,6 +231,21 @@ public class MaterialRefreshLayout extends FrameLayout {
                     }
                     return true;
                 }
+                else if(dy<0 && !canChildScrollDown()&&isLoadMore)
+                {
+                    if(materialFoodView != null&&!isLoadMoreing)
+                    {
+                        isLoadMoreing = true;
+                        materialFoodView.setVisibility(View.VISIBLE);
+                        materialFoodView.onBegin(this);
+                        materialFoodView.onRefreshing(this);
+                        if(refreshListener != null)
+                        {
+                            refreshListener.onRefreshLoadMore(MaterialRefreshLayout.this);
+                        }
+                    }
+                    return super.onInterceptTouchEvent(ev);
+                }
                 break;
         }
         return super.onInterceptTouchEvent(ev);
@@ -204,27 +260,23 @@ public class MaterialRefreshLayout extends FrameLayout {
         switch (e.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 mCurrentY = e.getY();
-
                 float dy = mCurrentY - mTouchY;
-                dy = Math.min(mWaveHeight * 2, dy);
-                dy = Math.max(0, dy);
+                    dy = Math.min(mWaveHeight * 2, dy);
+                    dy = Math.max(0, dy);
+                    if (mChildView != null) {
+                        float offsetY = decelerateInterpolator.getInterpolation(dy / mWaveHeight / 2) * dy / 2;
+                        float fraction = offsetY / mHeadHeight;
+                        mHeadLayout.getLayoutParams().height = (int) offsetY;
+                        mHeadLayout.requestLayout();
 
-                if (mChildView != null) {
-                    float offsetY = decelerateInterpolator.getInterpolation(dy / mWaveHeight / 2) * dy / 2;
-                    float fraction = offsetY / mHeadHeight;
-                    mHeadLayout.getLayoutParams().height = (int) offsetY;
-                    mHeadLayout.requestLayout();
-                    if (null != mMaterialHeadListener) {
-                        mMaterialHeadListener.onPull(this, fraction);
+                        if (materialHeadView != null) {
+                            materialHeadView.onPull(this, fraction);
+
+                        }
+                        if (!isOverlay)
+                            ViewCompat.setTranslationY(mChildView, offsetY);
+
                     }
-                    if (materialHeadView != null) {
-                        materialHeadView.onPull(this, fraction);
-
-                    }
-                    if (!isOverlay)
-                        ViewCompat.setTranslationY(mChildView, offsetY);
-
-                }
                 return true;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
@@ -249,9 +301,9 @@ public class MaterialRefreshLayout extends FrameLayout {
                            updateListener();
                         } else {
                             createAnimatorTranslationY(mChildView, 0, mHeadLayout);
-                            if (null != mMaterialHeadListener) {
-
-                            }
+//                            if (null != mMaterialHeadListener) {
+//
+//                            }
                         }
 
 
@@ -275,10 +327,11 @@ public class MaterialRefreshLayout extends FrameLayout {
             refreshListener.onRefresh(MaterialRefreshLayout.this);
         }
 
-        if (null != mMaterialHeadListener) {
-            mMaterialHeadListener.onRefreshing(this);
-        }
+    }
 
+    public void setLoadMore(boolean isLoadMore)
+    {
+        this.isLoadMore = isLoadMore;
     }
 
     public void setProgressColors(int[] colors)
@@ -323,7 +376,8 @@ public class MaterialRefreshLayout extends FrameLayout {
         viewPropertyAnimatorCompat.translationY(h);
         viewPropertyAnimatorCompat.start();
         viewPropertyAnimatorCompat.setUpdateListener(new ViewPropertyAnimatorUpdateListener() {
-            @Override public void onAnimationUpdate(View view) {
+            @Override
+            public void onAnimationUpdate(View view) {
                 float height = ViewCompat.getTranslationY(v);
                 fl.getLayoutParams().height = (int) height;
                 fl.requestLayout();
@@ -353,6 +407,30 @@ public class MaterialRefreshLayout extends FrameLayout {
         }
     }
 
+    public boolean canChildScrollDown() {
+        if (mChildView == null) {
+            return false;
+        }
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (mChildView instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) mChildView;
+                if (absListView.getChildCount()>0)
+                {
+                    int lastChildBottom = absListView.getChildAt(absListView.getChildCount() - 1).getBottom();
+                    return absListView.getLastVisiblePosition() == absListView.getAdapter().getCount() - 1 && lastChildBottom <= absListView.getMeasuredHeight();
+                }else
+                {
+                    return false;
+                }
+
+            } else {
+                return ViewCompat.canScrollVertically(mChildView, 1) || mChildView.getScrollY() > 0;
+            }
+        } else {
+            return ViewCompat.canScrollVertically(mChildView, 1);
+        }
+    }
+
     public void setWaveHigher() {
         headHeight = hIGHER_HEAD_HEIGHT;
         waveHeight = HIGHER_WAVE_HEIGHT;
@@ -368,9 +446,6 @@ public class MaterialRefreshLayout extends FrameLayout {
             viewPropertyAnimatorCompat.translationY(0);
             viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
             viewPropertyAnimatorCompat.start();
-            if (mMaterialHeadListener != null) {
-                mMaterialHeadListener.onComlete(this);
-            }
 
             if (materialHeadView != null) {
                 materialHeadView.onComlete(MaterialRefreshLayout.this);
@@ -395,6 +470,20 @@ public class MaterialRefreshLayout extends FrameLayout {
         });
     }
 
+    public void finishRefreshLoadMore()
+    {
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                if (materialFoodView != null && isLoadMoreing) {
+                    isLoadMoreing = false;
+                    materialFoodView.onComlete(MaterialRefreshLayout.this);
+                }
+            }
+        });
+
+    }
+
     public void setHeaderView(final View headerView) {
         post(new Runnable() {
             @Override
@@ -404,17 +493,17 @@ public class MaterialRefreshLayout extends FrameLayout {
         });
     }
 
+    public void setFooderView(final View fooderView) {
+        this.addView(fooderView);
+    }
+
+
     public void setWaveHeight(float waveHeight) {
         this.mWaveHeight = waveHeight;
     }
 
     public void setHeaderHeight(float headHeight) {
         this.mHeadHeight = headHeight;
-    }
-
-
-    public void setBRHeadListener(MaterialHeadListener materialHeadListener) {
-        this.mMaterialHeadListener = materialHeadListener;
     }
 
     public void setMaterialRefreshListener(MaterialRefreshListener refreshListener) {
