@@ -42,7 +42,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:library:1.2.1'
+    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
 }
 ```
 
