@@ -1,6 +1,6 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout v1.2.1
+MaterialRefreshLayout v1.3.0
 ==================================
 This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
@@ -31,7 +31,9 @@ Now let me talk about MaterialRefreshLayout of function
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
 
-(6)There are a lot of functions, you can see the source code...
+(6)MaterialRefreshLayout Can pull load more, drop-down refresh automatically, pull up refresh automatically.
+
+(7)There are a lot of functions, you can see the source code...
 
 Usage
 =================================================
@@ -212,8 +214,18 @@ In java code.
        materialRefreshLayout.setLoadMore(true);
 ```
 
+(7) It can drop-down refresh automatically and pull up refresh automatically.
+
+In java code.
+```java
+       materialRefreshLayout.autoRefresh();//drop-down refresh automatically
+        materialRefreshLayout.autoRefreshLoadMore();// pull up refresh automatically
+```
 
 
+V 1.3.0
+===========================
+add drop-down refresh automatically and pull up refresh automatically
 
 V 1.2.1
 ===========================
