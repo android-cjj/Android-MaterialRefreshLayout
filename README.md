@@ -1,8 +1,8 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout
+MaterialRefreshLayout v1.1.0
 ==================================
-This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 8 . I hope you like it !
+This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
 
 Now let me talk about MaterialRefreshLayout of function
@@ -40,7 +40,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:Library:1.0.0'
+    compile 'com.cjj.materialrefeshlayout:library:1.1.0'
 }
 ```
 
@@ -184,18 +184,48 @@ materialRefreshLayout.setWaveShow(true);
     >
 ```
 
+V 1.1.0
+===========================
+a new way to perform animations with support library, the library size and the amount of libraries decreased.
+
+
 AT LAST
 ===================================================================
 If the MaterialRefreshLayout has failed to meet to your requirements, you can go to the [BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout) to find what you need.
 
-THANKS
+[About me](http://android-cjj.github.io/)
+------------------------------------
+
+Thanks
 ============================================
-[JakeWharton/NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 
 [lsjwzh/MaterialLoadingProgressBar](https://github.com/lsjwzh/MaterialLoadingProgressBar)
 
 
+License
+=======
 
+    The MIT License (MIT)
+
+	Copyright (c) 2015 android-cjj
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
 
 
 
