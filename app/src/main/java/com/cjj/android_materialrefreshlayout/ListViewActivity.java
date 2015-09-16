@@ -1,6 +1,7 @@
 package com.cjj.android_materialrefreshlayout;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class ListViewActivity extends BaseActivity {
         listView.setAdapter(new android.widget.ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array));
         materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
         materialRefreshLayout.setLoadMore(true);
+        materialRefreshLayout.finishRefreshLoadMore();
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -49,5 +51,13 @@ public class ListViewActivity extends BaseActivity {
                 Toast.makeText(ListViewActivity.this, "load more", Toast.LENGTH_LONG).show();
             }
         });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                materialRefreshLayout
+                        .autoRefresh();
+            }
+        },3000);
     }
 }

@@ -1,6 +1,7 @@
 package com.cjj.android_materialrefreshlayout;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -38,6 +39,7 @@ public class RecyclerViewActivity extends BaseActivity {
 //        materialRefreshLayout.setShowProgressBg(true);
 //        materialRefreshLayout.setProgressColors(getResources().getIntArray(R.array.material_colors));
 //        materialRefreshLayout.setShowArrow(true);
+
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -62,6 +64,14 @@ public class RecyclerViewActivity extends BaseActivity {
                 Toast.makeText(RecyclerViewActivity.this, "load more", Toast.LENGTH_LONG).show();
             }
         });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                materialRefreshLayout
+                        .autoRefreshLoadMore();
+            }
+        }, 3000);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
         setupRecyclerView(rv);
     }

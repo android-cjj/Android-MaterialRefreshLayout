@@ -235,20 +235,24 @@ public class MaterialRefreshLayout extends FrameLayout {
                 {
                     if(materialFoodView != null&&!isLoadMoreing)
                     {
-                        isLoadMoreing = true;
-                        materialFoodView.setVisibility(View.VISIBLE);
-                        materialFoodView.onBegin(this);
-                        materialFoodView.onRefreshing(this);
-                        if(refreshListener != null)
-                        {
-                            refreshListener.onRefreshLoadMore(MaterialRefreshLayout.this);
-                        }
+                        soveLoadMoreLogic();
                     }
                     return super.onInterceptTouchEvent(ev);
                 }
                 break;
         }
         return super.onInterceptTouchEvent(ev);
+    }
+
+    private void soveLoadMoreLogic() {
+        isLoadMoreing = true;
+        materialFoodView.setVisibility(View.VISIBLE);
+        materialFoodView.onBegin(this);
+        materialFoodView.onRefreshing(this);
+        if(refreshListener != null)
+        {
+            refreshListener.onRefreshLoadMore(MaterialRefreshLayout.this);
+        }
     }
 
     @Override
@@ -295,24 +299,44 @@ public class MaterialRefreshLayout extends FrameLayout {
                         }
 
                     } else {
-
                         if (ViewCompat.getTranslationY(mChildView) >= mHeadHeight) {
                             createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
                            updateListener();
                         } else {
                             createAnimatorTranslationY(mChildView, 0, mHeadLayout);
-//                            if (null != mMaterialHeadListener) {
-//
-//                            }
                         }
-
-
                     }
 
                 }
                 return true;
         }
         return super.onTouchEvent(e);
+    }
+
+
+    public void autoRefresh()
+    {
+        updateListener();
+        if(isOverlay)
+        {
+
+            mHeadLayout.getLayoutParams().height = (int) mHeadHeight;
+            mHeadLayout.requestLayout();
+        }else
+        {
+            createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
+        }
+    }
+
+    public void autoRefreshLoadMore()
+    {
+        if(isLoadMore)
+        {
+            soveLoadMoreLogic();
+        }else
+        {
+            throw new RuntimeException("you must  setLoadMore ture");
+        }
     }
 
     public void updateListener()

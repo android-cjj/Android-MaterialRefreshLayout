@@ -22,7 +22,7 @@
     android:id="@+id/refresh"
     app:overlay="true"
     app:isLoadMore="true"
-    app:progress_size_type="big"
+    app:progress_size_type="normal"
     app:wave_color="#90ffffff"
     app:wave_show="true"
     app:progress_colors="@array/material_colors"
