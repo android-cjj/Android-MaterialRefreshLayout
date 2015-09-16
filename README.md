@@ -184,6 +184,28 @@ materialRefreshLayout.setWaveShow(true);
     >
 ```
 
+(6)add pull up loading more features...
+
+![](http://www.apkbus.com/data/attachment/forum/201509/16/180340xypx76ypefpdzfrf.png)
+
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:isLoadMore="true"
+    >
+
+```
+In java code.
+```java
+       materialRefreshLayout.setLoadMore(true);
+```
+
+
+
 V 1.2.1
 ===========================
 add pull up loading more features
