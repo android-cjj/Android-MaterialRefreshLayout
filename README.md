@@ -65,10 +65,18 @@ Get instance and use it.
       public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
           //refreshing...
       }
+      
+       @Override
+       public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+       	  //load more refreshing...
+       }
   }
+  
 // refresh complete 
 materialRefreshLayout.finishRefresh();
-  
+
+// load more refresh complete 
+ materialRefreshLayout.finishRefreshLoadMore();
 ```
 
 Config
@@ -203,6 +211,7 @@ In java code.
 ```java
        materialRefreshLayout.setLoadMore(true);
 ```
+
 
 
 
