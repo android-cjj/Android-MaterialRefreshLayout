@@ -1,4 +1,5 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
+如果想支持我，可以在github上follow下我的，十分感谢...我会好好努力的...呵呵...
 
 MaterialRefreshLayout v1.3.0
 ==================================
