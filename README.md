@@ -1,4 +1,5 @@
-[![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)[中文版文档](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/README-cn.md)
+[![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout) 
+[中文版文档](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/README-cn.md)
 --------------------------------------------
 
 MaterialRefreshLayout v1.3.0
