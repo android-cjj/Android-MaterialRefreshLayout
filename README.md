@@ -1,6 +1,6 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout v1.1.0
+MaterialRefreshLayout v1.3.0
 ==================================
 This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
@@ -31,7 +31,9 @@ Now let me talk about MaterialRefreshLayout of function
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
 
-(6)There are a lot of functions, you can see the source code...
+(6)MaterialRefreshLayout Can pull load more, drop-down refresh automatically, pull up refresh automatically.
+
+(7)There are a lot of functions, you can see the source code...
 
 Usage
 =================================================
@@ -40,7 +42,7 @@ Add dependency.
 
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:library:1.1.0'
+    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
 }
 ```
 
@@ -65,10 +67,18 @@ Get instance and use it.
       public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
           //refreshing...
       }
+      
+       @Override
+       public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+       	  //load more refreshing...
+       }
   }
+  
 // refresh complete 
 materialRefreshLayout.finishRefresh();
-  
+
+// load more refresh complete 
+ materialRefreshLayout.finishRefreshLoadMore();
 ```
 
 Config
@@ -183,6 +193,47 @@ materialRefreshLayout.setWaveShow(true);
     app:progress_show_circle_backgroud="false"
     >
 ```
+
+(6)add pull up loading more features...
+
+![](http://www.apkbus.com/data/attachment/forum/201509/16/180340xypx76ypefpdzfrf.png)
+
+```xml
+<com.cjj.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh"
+    app:isLoadMore="true"
+    >
+
+```
+In java code.
+```java
+       materialRefreshLayout.setLoadMore(true);
+```
+
+(7) It can drop-down refresh automatically and pull up refresh automatically.
+
+In java code.
+```java
+       materialRefreshLayout.autoRefresh();//drop-down refresh automatically
+        materialRefreshLayout.autoRefreshLoadMore();// pull up refresh automatically
+```
+
+
+V 1.3.0
+===========================
+add drop-down refresh automatically and pull up refresh automatically
+
+V 1.2.1
+===========================
+add pull up loading more features
+
+V 1.2.0
+===========================
+add progress size type ,you can use xml attr to set app:progress_size_type="normal"(big) and fix some bugs
 
 V 1.1.0
 ===========================
