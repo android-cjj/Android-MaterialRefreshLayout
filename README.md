@@ -1,5 +1,8 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
+[中文文档](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/README-cn.md)
+=======================================
+
 MaterialRefreshLayout v1.3.0
 ==================================
 This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
