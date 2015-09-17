@@ -55,8 +55,7 @@ public class ListViewActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                materialRefreshLayout
-                        .autoRefresh();
+                materialRefreshLayout.autoRefresh();
             }
         },3000);
     }
