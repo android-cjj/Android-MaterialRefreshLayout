@@ -1,13 +1,11 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-如果想支持我，可以在github上follow下我的，十分感谢...我会好好努力的...呵呵...
-
 MaterialRefreshLayout v1.3.0
 ==================================
 这是一个下拉刷新控件，它比SwipeRefreshLayout更漂亮和强大，使用也比较简单。支持android 3.0 以上。希望你喜欢，呵呵。
 ![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
 
-现在让我来说说他有多牛逼的功能吧，其实也就那样......
+现在让我来说说他有多牛逼的功能吧，也是也就那样......
 ---------------------------------------------------------------------------
 (1)如果你喜欢官方的刷新效果，没问题，它也可以做到，这是一种侵入式的下拉刷新
 
@@ -245,7 +243,6 @@ V 1.0.0
 
 最后
 ===================================================================
-If the MaterialRefreshLayout has failed to meet to your requirements, you can go to the [BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout) to find what you need.
 如果这些都没能满足你的需求的话，没问题，你可以去看看[BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout)，我想，你可以找到一个专属于你的人...错了...是下拉刷新......
 
 
