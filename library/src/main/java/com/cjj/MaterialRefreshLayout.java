@@ -316,16 +316,19 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     public void autoRefresh()
     {
-        updateListener();
-        if(isOverlay)
+        if(!isRefreshing)
         {
-
-            mHeadLayout.getLayoutParams().height = (int) mHeadHeight;
-            mHeadLayout.requestLayout();
-        }else
-        {
-            createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
+            updateListener();
+            if(isOverlay)
+            {
+                mHeadLayout.getLayoutParams().height = (int) mHeadHeight;
+                mHeadLayout.requestLayout();
+            }else
+            {
+                createAnimatorTranslationY(mChildView, mHeadHeight, mHeadLayout);
+            }
         }
+
     }
 
     public void autoRefreshLoadMore()

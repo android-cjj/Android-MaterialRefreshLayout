@@ -71,7 +71,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 materialRefreshLayout
                         .autoRefreshLoadMore();
             }
-        }, 3000);
+        }, 1000);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
         setupRecyclerView(rv);
     }
