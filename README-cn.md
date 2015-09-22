@@ -254,6 +254,9 @@ V 1.0.0
 
 [lsjwzh/MaterialLoadingProgressBar](https://github.com/lsjwzh/MaterialLoadingProgressBar)
 
+随意说说
+----------------------------------------------
+刚建了个github小伙伴交流群(477826523),有兴趣的朋友可以加进来的...小小要求：github有至少7个关注者或者开源库有7颗星星的...
 
 License
 =======
