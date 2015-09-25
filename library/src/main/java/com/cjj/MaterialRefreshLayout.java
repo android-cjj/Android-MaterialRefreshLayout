@@ -155,6 +155,7 @@ public class MaterialRefreshLayout extends FrameLayout {
             progressSize = BIG_PROGRESS_SIZE;
         }
         isLoadMore = t.getBoolean(R.styleable.MaterialRefreshLayout_isLoadMore,false);
+        t.recycle();
     }
 
 
