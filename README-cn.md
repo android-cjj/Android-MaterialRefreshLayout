@@ -245,6 +245,9 @@ V 1.0.0
 ===================================================================
 如果这些都没能满足你的需求的话，没问题，你可以去看看[BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout)，我想，你可以找到一个专属于你的人...错了...是下拉刷新......
 
+在GitHub follow 我就是对我最大的支持，呵呵:
+[https://github.com/android-cjj](https://github.com/android-cjj).
+
 
 [关于我](http://android-cjj.github.io/)
 ------------------------------------
