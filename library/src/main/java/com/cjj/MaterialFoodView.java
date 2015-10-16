@@ -85,7 +85,9 @@ public class MaterialFoodView extends FrameLayout implements MaterialHeadListene
         this.post(new Runnable() {
             @Override
             public void run() {
-                circleProgressBar.setProgress(progressValue);
+                if (circleProgressBar != null) {
+                    circleProgressBar.setProgress(progressValue);
+                }
             }
         });
 
