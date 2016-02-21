@@ -184,7 +184,7 @@ public class MaterialRefreshLayout extends FrameLayout {
         setHeaderHeight(Util.dip2px(context, headHeight));
 
         materialHeadView = new MaterialHeadView(context);
-        materialHeadView.setWaveColor(isShowWave ? waveColor : Color.WHITE);
+        materialHeadView.setWaveColor(isShowWave ? waveColor : Color.parseColor("#00000000"));
         materialHeadView.showProgressArrow(showArrow);
         materialHeadView.setProgressSize(progressSize);
         materialHeadView.setProgressColors(colorSchemeColors);
