@@ -34,7 +34,7 @@ MaterialRefreshLayout v1.4.0
 
 (7)如果需要覆盖的，也可以.......
 
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj7.gif)
 
 
 用法
