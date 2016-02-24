@@ -1,9 +1,9 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout v1.3.0
+MaterialRefreshLayout v1.4.0
 ==================================
 这是一个下拉刷新控件，它比SwipeRefreshLayout更漂亮和强大，使用也比较简单。支持android 3.0 以上。希望你喜欢，呵呵。
-![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
+
 
 现在让我来说说他有多牛逼的功能吧，其实也就那样......
 ---------------------------------------------------------------------------
