@@ -9,29 +9,33 @@ MaterialRefreshLayout v1.4.0
 ---------------------------------------------------------------------------
 (1)如果你喜欢官方的刷新效果，没问题，它也可以做到，这是一种侵入式的下拉刷新
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145037bwzigoghgrk414hw.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj2.gif)
 
-(2)然而，有些人并不喜欢侵入刷新，或者说，需求需要的是非侵入刷新，没问题，它同样可以做到......
+(2)然而，有些人并不喜欢侵入刷新，或者说，需求需要的是非侵入刷新，没问题，同时，觉得上面的效果太单调了，好的，我们可以加个波浪形状的背景，就像下图所示
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145142fp1z3fp0hkx0apg3.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj1.gif)
 
-(3)如果你觉得上面的效果太单调了，好的，我们可以加个波浪形状的背景，就像下图所示
+(3)如果这时候你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上的话，没问题，它还是可以做到的，呵呵......
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/144913t3beqg3eics1xwwr.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj3.gif)
+
+(4)我知道你需要加载更多，本人还是不建议两者一起，你可以用这个，两者去组合[RecyclerViewWithFooter](https://github.com/android-cjj/Android-RecyclerViewWithFooter)，当然，这里也写了。
+
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj4.gif)
+
+(5)自动下拉刷新也是很多人需要的，比如下图所示，当然也做了自动上拉刷新，具体看源码
+
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj5.gif)
 
 
-(4)如果这时候你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上的话，没问题，它还是可以做到的，呵呵......
+(6)看久了你如果讨厌的话，我还增加了一种样式，如下图：
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/144736ah8xaeamz155zq54.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
 
+(7)如果需要覆盖的，也可以.......
 
-(5)现在如果你又在想，还是最简单的效果最好的话，没问题，你可以看看下图所示的效果......
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
-
-(6)听从了很多人的意见，新加了上拉加载更多，自动下拉刷新，自动上拉刷新等效果......
-
-(7)具体你看源码吧，呵呵......
 
 用法
 =================================================
