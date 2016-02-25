@@ -69,17 +69,17 @@ Get instance and use it.
       public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
           //refreshing...
       }
-      
+
        @Override
        public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
        	  //load more refreshing...
        }
   }
-  
-// refresh complete 
+
+// refresh complete
 materialRefreshLayout.finishRefresh();
 
-// load more refresh complete 
+// load more refresh complete
  materialRefreshLayout.finishRefreshLoadMore();
 ```
 
