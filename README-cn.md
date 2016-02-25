@@ -1,43 +1,48 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-MaterialRefreshLayout v1.3.0
+MaterialRefreshLayout v1.4.0
 ==================================
 这是一个下拉刷新控件，它比SwipeRefreshLayout更漂亮和强大，使用也比较简单。支持android 3.0 以上。希望你喜欢，呵呵。
-![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
 
-现在让我来说说他有多牛逼的功能吧，其实也就那样......
+
+现在让我来说说他有多牛逼的功能吧，其实也就那样......gif图录制的很奇怪，建议真机查看，啊哈哈哈
 ---------------------------------------------------------------------------
 (1)如果你喜欢官方的刷新效果，没问题，它也可以做到，这是一种侵入式的下拉刷新
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145037bwzigoghgrk414hw.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj2.gif)
 
-(2)然而，有些人并不喜欢侵入刷新，或者说，需求需要的是非侵入刷新，没问题，它同样可以做到......
+(2)然而，有些人并不喜欢侵入刷新，或者说，需求需要的是非侵入刷新，没问题，同时，觉得上面的效果太单调了，好的，我们可以加个波浪形状的背景，就像下图所示
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145142fp1z3fp0hkx0apg3.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj1.gif)
 
-(3)如果你觉得上面的效果太单调了，好的，我们可以加个波浪形状的背景，就像下图所示
+(3)如果这时候你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上的话，没问题，它还是可以做到的，呵呵......
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/144913t3beqg3eics1xwwr.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj3.gif)
+
+(4)我知道你需要加载更多，本人还是不建议两者一起，你可以用这个，两者去组合[RecyclerViewWithFooter](https://github.com/android-cjj/Android-RecyclerViewWithFooter)，当然，这里也写了。
+
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj4.gif)
+
+(5)自动下拉刷新也是很多人需要的，比如下图所示，当然也做了自动上拉刷新，具体看源码
+
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj5.gif)
 
 
-(4)如果这时候你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上的话，没问题，它还是可以做到的，呵呵......
+(6)看久了你如果讨厌的话，我还增加了一种样式，如下图：
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/144736ah8xaeamz155zq54.gif)
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
 
+(7)如果需要覆盖的，也可以.......
 
-(5)现在如果你又在想，还是最简单的效果最好的话，没问题，你可以看看下图所示的效果......
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj7.gif)
 
-![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
-
-(6)听从了很多人的意见，新加了上拉加载更多，自动下拉刷新，自动上拉刷新等效果......
-
-(7)具体你看源码吧，呵呵......
 
 用法
 =================================================
 
 AS添加依赖库，这样就不用导入整个library库,Eclipse的用户导入library库,慢慢折腾吧！（因为我觉得如果不是环境不允许你用as的话,还是放弃eclipse吧，毕竟github上很多优秀的项目都是用as的，好吧我多嘴了...）
 
+1.4版本的bug比较少，功能还行，你直接导入library，想改什么就改什么了
 ```
 dependencies {
     compile 'com.cjj.materialrefeshlayout:library:1.3.0'

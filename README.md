@@ -9,6 +9,10 @@ This is a drop-down refresh control, it is more beautiful and powerful than Swip
 
 Now let me talk about MaterialRefreshLayout of function
 ---------------------------------------------------------------------------
+add a lovely sun
+
+![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
+
 (1)It can be done like SwipeRefreshLayout drop-down refresh effect,this is a kind of intrusive drop-down refresh.
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/145037bwzigoghgrk414hw.gif)
