@@ -2,39 +2,100 @@
 <com.cjj.MaterialRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/refresh"
-    app:wave_color="#ff8BC34A"
-    app:progress_show_circle_backgroud="true"
     app:overlay="false"
-    app:wave_show="true"
     app:progress_backgroud_color="#FFFAFAFA"
     app:progress_colors="@array/material_colors"
-    app:wave_height_type="normal"
     app:progress_show_arrow="true"
+    app:progress_show_circle_backgroud="true"
+    app:wave_color="#60ff2020"
+    app:wave_height_type="normal"
+    app:wave_show="true"
     >
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/rv"
-            android:text="RecyclerView"
-            android:onClick="onClick"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/lv"
-            android:layout_marginTop="10dp"
-            android:text="ListView"
-            android:onClick="onClick"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/simple"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="simple"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/wave"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="wave"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="loadMore"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="autoFresh"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/sun"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="sun"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/overLay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ff2020"
+                android:onClick="onClick"
+                android:text="overLay"
+                android:textColor="#fff"/>
+
 
         </LinearLayout>
     </ScrollView>

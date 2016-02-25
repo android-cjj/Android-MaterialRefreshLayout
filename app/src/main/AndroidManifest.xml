@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListViewActivity"/>
-        <activity android:name=".RecyclerViewActivity"/>
+        <activity android:name=".AutoRefreshActivity"/>
+        <activity android:name=".LoadMoreActivity"/>
+        <activity android:name=".SimpleActivity"/>
+        <activity android:name=".WaveActivity"/>
+        <activity android:name=".SunActivity"/>
+        <activity android:name=".OverLayActivity"/>
     </application>
 
 </manifest>

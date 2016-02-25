@@ -28,7 +28,7 @@ public class ScrollViewActivity extends BaseActivity implements View.OnClickList
                         materialRefreshLayout.finishRefresh();
 
                     }
-                }, 5000);
+                }, 3000);
                 materialRefreshLayout.finishRefreshLoadMore();
 
             }
@@ -45,14 +45,32 @@ public class ScrollViewActivity extends BaseActivity implements View.OnClickList
 
         switch (v.getId())
         {
+            case R.id.simple:
+                startActivity(new Intent(this,SimpleActivity.class));
+                break;
+
+            case R.id.wave:
+                startActivity(new Intent(this,WaveActivity.class));
+                break;
+
             case R.id.rv:
-                Intent intent = new Intent(this,RecyclerViewActivity.class);
+                Intent intent = new Intent(this,LoadMoreActivity.class);
                 startActivity(intent);
                 break;
             case R.id.lv:
-                Intent intent2 = new Intent(this,ListViewActivity.class);
+                Intent intent2 = new Intent(this,AutoRefreshActivity.class);
                 startActivity(intent2);
                 break;
+
+
+            case R.id.sun:
+                startActivity(new Intent(this,SunActivity.class));
+                break;
+
+            case R.id.overLay:
+                startActivity(new Intent(this,OverLayActivity.class));
+                break;
+
         }
     }
 }

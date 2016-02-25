@@ -1,22 +1,20 @@
 package com.cjj.android_materialrefreshlayout;
 
 import android.content.Context;
-import android.os.Handler;
-import android.support.annotation.Nullable;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.cjj.MaterialHeadListener;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 
@@ -24,16 +22,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RecyclerViewActivity extends BaseActivity {
+/**
+ * Created by cjj on 2016/2/24.
+ */
+public class WaveActivity extends BaseActivity {
     private MaterialRefreshLayout materialRefreshLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_list);
+        setContentView(R.layout.activity_simple);
         initsToolbar();
 
         materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        materialRefreshLayout.setSunStyle(true);
+
+        materialRefreshLayout.setWaveShow(true);
+        materialRefreshLayout.setWaveColor(Color.parseColor("#60ff2020"));
+
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -50,22 +55,11 @@ public class RecyclerViewActivity extends BaseActivity {
 
             @Override
             public void onfinish() {
-                Toast.makeText(RecyclerViewActivity.this, "finish", Toast.LENGTH_LONG).show();
+                Toast.makeText(WaveActivity.this, "finish", Toast.LENGTH_LONG).show();
             }
 
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                Toast.makeText(RecyclerViewActivity.this, "load more", Toast.LENGTH_LONG).show();
-            }
         });
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                materialRefreshLayout
-                        .autoRefreshLoadMore();
-            }
-        }, 1000);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
         setupRecyclerView(rv);
     }
@@ -73,47 +67,7 @@ public class RecyclerViewActivity extends BaseActivity {
     private void initsToolbar() {
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
-
-    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-
-                case R.id.style0:
-                    materialRefreshLayout.setWaveColor(0xff8BC34A);
-                    materialRefreshLayout.setIsOverLay(false);
-                    materialRefreshLayout.setWaveShow(true);
-                    materialRefreshLayout.setShowProgressBg(true);
-                    materialRefreshLayout.setProgressColors(getResources().getIntArray(R.array.material_colors));
-                    materialRefreshLayout.setShowArrow(true);
-                    break;
-                case R.id.style1:
-
-                    break;
-//                case R.id.style2:
-//                    materialRefreshLayout.setWaveColor(0x90ffffff);
-//                    materialRefreshLayout.setIsOverLay(true);
-//                    materialRefreshLayout.setWaveShow(true);
-//                    materialRefreshLayout.setShowProgressBg(true);
-//                    materialRefreshLayout.setProgressColors(getResources().getIntArray(R.array.material_colors));
-//                    materialRefreshLayout.setShowArrow(true);
-//                    break;
-//                case R.id.style3:
-//                    materialRefreshLayout.setWaveColor(0xff8BC34A);
-//                    materialRefreshLayout.setIsOverLay(false);
-//                    materialRefreshLayout.setWaveShow(true);
-//                    materialRefreshLayout.setShowProgressBg(true);
-//                    materialRefreshLayout.setProgressColors(getResources().getIntArray(R.array.material_colors));
-//                    materialRefreshLayout.setShowArrow(true);
-//                    break;
-            }
-
-
-            return true;
-        }
-    };
 
 
     @Override
@@ -124,7 +78,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(RecyclerViewActivity.this));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(WaveActivity.this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
@@ -166,11 +120,9 @@ public class RecyclerViewActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            if(position==0)
-            {
+            if (position == 0) {
                 holder.mImageView.setImageResource(R.drawable.a6);
-            }else if(position == 1)
-            {
+            } else if (position == 1) {
                 holder.mImageView.setImageResource(R.drawable.a5);
             }
 
@@ -181,4 +133,5 @@ public class RecyclerViewActivity extends BaseActivity {
             return 3;
         }
     }
+
 }
