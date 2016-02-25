@@ -1,14 +1,11 @@
 package com.cjj.android_materialrefreshlayout;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
-import com.cjj.header.SunLayout;
 
 /**
  * Created by Administrator on 2015/9/10.

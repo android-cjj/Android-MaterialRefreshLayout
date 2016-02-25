@@ -19,7 +19,6 @@ public class ScrollViewActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.activity_scrollview);
 
         materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        materialRefreshLayout.setSunStyle(true);
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
