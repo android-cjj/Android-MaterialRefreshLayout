@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/style0"
+        android:title="wave"
+        android:orderInCategory="70"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/style1"
+        android:title="overlay"
+        android:orderInCategory="80"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/style2"
+        android:title="invasive"
+        android:orderInCategory="90"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/style3" android:title="noninvasive"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+
+
+
+</menu>
