@@ -32,16 +32,16 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
     private int mEyesSize;
     private int mLineLevel;
     private int mMouthStro;
-    private int mLineColor,mLineWidth,mLineHeight;
+    private int mLineColor, mLineWidth, mLineHeight;
 
     private ObjectAnimator mAnimator;
 
     public SunLayout(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public SunLayout(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public SunLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -83,9 +83,10 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
 
     /**
      * 设置太阳半径
+     *
      * @param sunRadius
      */
-    public void setSunRadius(int sunRadius){
+    public void setSunRadius(int sunRadius) {
         mSunRadius = sunRadius;
         mSunView.setSunRadius(mSunRadius);
         mLineView.setSunRadius(mSunRadius);
@@ -93,6 +94,7 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
 
     /**
      * 设置太阳颜色
+     *
      * @param sunColor
      */
     public void setSunColor(int sunColor) {
@@ -102,54 +104,60 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
 
     /**
      * 设置太阳眼睛大小
+     *
      * @param eyesSize
      */
-    public void setEyesSize(int eyesSize){
+    public void setEyesSize(int eyesSize) {
         mEyesSize = eyesSize;
         mSunView.setEyesSize(mEyesSize);
     }
 
     /**
      * 设置太阳线的数量等级
+     *
      * @param level
      */
-    public void setLineLevel(int level){
+    public void setLineLevel(int level) {
         mLineLevel = level;
         mLineView.setLineLevel(mLineLevel);
     }
 
     /**
      * 设置太阳线的颜色
+     *
      * @param lineColor
      */
-    public void setLineColor(int lineColor){
+    public void setLineColor(int lineColor) {
         mLineColor = lineColor;
         mLineView.setLineColor(mLineColor);
     }
 
     /**
      * 设置太阳线的宽度
+     *
      * @param lineWidth
      */
-    public void setLineWidth(int lineWidth){
+    public void setLineWidth(int lineWidth) {
         mLineWidth = lineWidth;
         mLineView.setLineWidth(mLineWidth);
     }
 
     /**
      * 设置太阳线的长度
+     *
      * @param lineHeight
      */
-    public void setLineHeight(int lineHeight){
+    public void setLineHeight(int lineHeight) {
         mLineHeight = lineHeight;
         mLineView.setLineHeight(mLineHeight);
     }
 
     /**
      * 设置嘴巴粗细
+     *
      * @param mouthStro
      */
-    public void setMouthStro(int mouthStro){
+    public void setMouthStro(int mouthStro) {
         mMouthStro = mouthStro;
         mSunView.setMouthStro(mMouthStro);
     }
@@ -157,24 +165,25 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
 
     /**
      * 开启转圈圈
+     *
      * @param v
      */
-    public void startSunLineAnim(View v){
-        if(mAnimator == null){
+    public void startSunLineAnim(View v) {
+        if (mAnimator == null) {
             mAnimator = ObjectAnimator.ofFloat(v, "rotation", 0f, 720f);
-            mAnimator.setDuration(7*1000);
+            mAnimator.setDuration(7 * 1000);
             mAnimator.setInterpolator(new LinearInterpolator());
             mAnimator.setRepeatCount(ValueAnimator.INFINITE);
         }
-        if(!mAnimator.isRunning())
-        mAnimator.start();
+        if (!mAnimator.isRunning())
+            mAnimator.start();
     }
 
     /**
      * 停止动画
      */
-    public void cancelSunLineAnim(){
-        if (mAnimator != null){
+    public void cancelSunLineAnim() {
+        if (mAnimator != null) {
             mAnimator.cancel();
         }
     }
@@ -196,6 +205,12 @@ public class SunLayout extends FrameLayout implements MaterialHeadListener {
     @Override
     public void onPull(MaterialRefreshLayout materialRefreshLayout, float fraction) {
         float a = Util.limitValue(1, fraction);
+        if (a >= 0.7) {
+            mLineView.setVisibility(View.VISIBLE);
+        } else {
+            mLineView.setVisibility(View.GONE);
+        }
+        mSunView.setPerView(mSunRadius, a);
         ViewCompat.setScaleX(this, a);
         ViewCompat.setScaleY(this, a);
         ViewCompat.setAlpha(this, a);
