@@ -1,6 +1,7 @@
 [![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
 
-GitHub小伙伴交流群'' 477826523
+如果使用上遇到坑，点击链接加入群【GitHub小伙伴交流群'''】：http://jq.qq.com/?_wv=1027&k=27lxYHB''' ,群号：477826523 帮你搞定一切bug...
+
 
 MaterialRefreshLayout v1.4.0
 ==================================
