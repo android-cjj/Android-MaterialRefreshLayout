@@ -45,10 +45,10 @@ MaterialRefreshLayout v1.4.0
 
 AS添加依赖库，这样就不用导入整个library库,Eclipse的用户导入library库,慢慢折腾吧！（因为我觉得如果不是环境不允许你用as的话,还是放弃eclipse吧，毕竟github上很多优秀的项目都是用as的，好吧我多嘴了...）
 
-1.4版本的bug比较少，功能还行，你直接导入library，想改什么就改什么了
+1.4版本的bug比较少，功能还行，你直接导入library，想改什么就改什么了，
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
+    compile 'com.cjj.materialrefeshlayout:library:1.3.0'//不建议在as直接导入这个  bug 多  还是直接用library ,自己修改也方便
 }
 ```
 
