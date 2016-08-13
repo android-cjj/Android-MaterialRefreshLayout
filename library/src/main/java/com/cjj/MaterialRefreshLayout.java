@@ -1,12 +1,13 @@
 package com.cjj;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -414,14 +415,15 @@ public class MaterialRefreshLayout extends FrameLayout {
 //    }
 
     public void createAnimatorTranslationY(final View v, final float h, final FrameLayout fl) {
-        ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(v);
-        viewPropertyAnimatorCompat.setDuration(250);
-        viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
-        viewPropertyAnimatorCompat.translationY(h);
-        viewPropertyAnimatorCompat.start();
-        viewPropertyAnimatorCompat.setUpdateListener(new ViewPropertyAnimatorUpdateListener() {
+        //use ObjectAnimator instead of ViewPropertyAnimatorCompat
+        //because  Prior to API 19, ViewPropertyAnimatorUpdateListener will do nothing
+        ObjectAnimator animator = ObjectAnimator.ofFloat(v, "translationY", h);
+        animator.setDuration(250);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.start();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationUpdate(View view) {
+            public void onAnimationUpdate(ValueAnimator animation) {
                 float height = ViewCompat.getTranslationY(v);
                 fl.getLayoutParams().height = (int) height;
                 fl.requestLayout();
@@ -549,5 +551,12 @@ public class MaterialRefreshLayout extends FrameLayout {
     public void setMaterialRefreshListener(MaterialRefreshListener refreshListener) {
         this.refreshListener = refreshListener;
     }
-
+    
+    public boolean getIsRefreshing() {
+        return isRefreshing;
+    }
+    
+    public boolean getIsLoadMoreing() {
+        return isLoadMoreing;
+    }
 }
