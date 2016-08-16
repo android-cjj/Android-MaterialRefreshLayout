@@ -192,6 +192,9 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
             materialWaveView.onRefreshing(materialRefreshLayout);
         }
         if (circleProgressBar != null) {
+            // fix auto refresh bug for display loading circle
+            ViewCompat.setScaleX(circleProgressBar, 1f);
+            ViewCompat.setScaleY(circleProgressBar, 1f);
             circleProgressBar.onRefreshing(materialRefreshLayout);
         }
     }
