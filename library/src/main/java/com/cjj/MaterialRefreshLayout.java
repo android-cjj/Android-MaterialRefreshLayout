@@ -206,9 +206,14 @@ public class MaterialRefreshLayout extends FrameLayout {
                     return true;
                 } else if (dy < 0 && !canChildScrollDown() && isLoadMore) {
                     if (mMaterialFooterView != null && !isLoadMoreing) {
-                        soveLoadMoreLogic();
+                        isLoadMoreing = true;
                     }
                     return super.onInterceptTouchEvent(ev);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (isLoadMoreing) {
+                    soveLoadMoreLogic();
                 }
                 break;
         }
